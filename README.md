@@ -1,7 +1,7 @@
 # expr
+[![Go Reference](https://pkg.go.dev/badge/github.com/stianwa/expr.svg)](https://pkg.go.dev/github.com/stianwa/expr) [![Go Report Card](https://goreportcard.com/badge/github.com/stianwa/expr)](https://goreportcard.com/report/github.com/stianwa/expr)
 
 Package expr implements parsing of basic infix arithmetic expressions.
-
 
 Installation
 ------------
