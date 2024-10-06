@@ -58,8 +58,8 @@ func newTokenizer(expr string) *tokenizer {
 	}
 }
 
-// token provides an expression token. It can be an operand, sign,
-// parenthesis or ad number.
+// token represents an expression token. It can be an operand, sign,
+// parenthesis or a number.
 type token struct {
 	op    byte
 	value float64
@@ -83,7 +83,21 @@ func (t *token) String() string {
 	if t.op != 0 {
 		return string(t.op)
 	}
-	return strings.TrimRight(fmt.Sprintf("%f", t.value), "0.")
+
+	return trimFloat(t.value)
+}
+
+func trimFloat(f float64) string {
+	if f == 0 {
+		return "0"
+	}
+	s := fmt.Sprintf("%f", f)
+	if strings.Contains(s, ".") {
+		s = strings.TrimRight(s, "0")
+		s = strings.TrimSuffix(s, ".")
+	}
+
+	return s
 }
 
 func (t *token) isOp() bool {
